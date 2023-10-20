@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SuperApi666ProPlus3000.BackendModels;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using SuperApi666ProPlus3000.BackendModels;
+using SuperApi666ProPlus3000.SharedModels;
 
 namespace SuperApi666ProPlus3000.Controllers
 {
@@ -105,6 +105,7 @@ namespace SuperApi666ProPlus3000.Controllers
 			return true;
 		}
 
+		[AllowAnonymous]
 		[HttpGet]
 		public async Task<bool> CheckUnauthorized()
 		{

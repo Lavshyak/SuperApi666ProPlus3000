@@ -20,8 +20,8 @@ namespace SuperApi666ProPlus3000.DbContexts
  public virtual DbSet<TUserLogin> UserLogins { get; set; } = default!;
  public virtual DbSet<TUserToken> UserTokens { get; set; } = default!;
 */
-
-        public DbSet<Poop> Poops { get; set; } = default!;
+        
+        public DbSet<MyCommonCringeModel> MyCommonCringeModels { get; set; } = default!;
 
         //public DbSet<User> Users { get; set; } //удалить
     }

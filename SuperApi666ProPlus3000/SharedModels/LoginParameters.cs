@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SuperApi666ProPlus3000;
+namespace SuperApi666ProPlus3000.SharedModels;
 
 public class LoginParameters
 {
