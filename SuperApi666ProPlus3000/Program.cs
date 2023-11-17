@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SuperApi666ProPlus3000.BackendModels;
 using SuperApi666ProPlus3000.DbContexts;
 using SuperApi666ProPlus3000;
 
@@ -14,16 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//!
+
 builder.Services.AddDbContext<MainDbContext>(
     options => options.UseNpgsql(builder.Configuration.GetConnectionString("MainDb"))
     );
-//!
+
 builder.Services.AddMyAuth();
 
 var app = builder.Build();
 
-//!
 await app.Services.SynchronizeIdentityRoles();
 
 // Configure the HTTP request pipeline.

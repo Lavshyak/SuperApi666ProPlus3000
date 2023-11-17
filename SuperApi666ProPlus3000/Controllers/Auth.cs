@@ -67,7 +67,7 @@ namespace SuperApi666ProPlus3000.Controllers
 		[HttpGet]
 		public async Task<IEnumerable<string>> MyRole()
 		{
-			return await this._userManager.GetRolesAsync(await _userManager.GetUserAsync(this.User) ??
+			return await _userManager.GetRolesAsync(await _userManager.GetUserAsync(User) ??
 			                                             throw new Exception());
 		}
 
@@ -82,9 +82,9 @@ namespace SuperApi666ProPlus3000.Controllers
 		[HttpGet]
 		public async Task BecomeAdmin()
 		{
-			BackendModels.User? user = await _userManager.GetUserAsync(this.User);
+			User? user = await _userManager.GetUserAsync(User);
 
-			if (user == null) throw new Exception("Не юзер");
+			if (user == null) throw new Exception("Not a user");
 
 			await _userManager.AddToRoleAsync(user, "Admin");
 			await _signInManager.RefreshSignInAsync(user);
@@ -93,7 +93,7 @@ namespace SuperApi666ProPlus3000.Controllers
 		[HttpGet]
 		public long MyId()
 		{
-			ClaimsPrincipal claimsPrincipal = this.User;
+			ClaimsPrincipal claimsPrincipal = User;
 			if (!long.TryParse(claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier), out var userId))
 				throw new Exception($"NameIdentifier is not valid (parse to {userId.GetType().Name} failed)");
 			return userId;
@@ -109,7 +109,7 @@ namespace SuperApi666ProPlus3000.Controllers
 		[HttpGet]
 		public async Task<bool> CheckUnauthorized()
 		{
-			BackendModels.User? user = await _userManager.GetUserAsync(this.User);
+			User? user = await _userManager.GetUserAsync(User);
 
 			if (user == null) return true; //не авторизован
 
